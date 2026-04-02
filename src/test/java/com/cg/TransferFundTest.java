@@ -1,8 +1,9 @@
 package com.cg;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -34,6 +35,7 @@ public class TransferFundTest {
 		Mockito.when(repo.findById(1001)).thenReturn(optAcc1);
 		Mockito.when(repo.findById(1002)).thenReturn(optAcc2);
 		Mockito.when(repo.save(Mockito.any(Account.class))).thenReturn(new Account());
-		assertTrue(accService.transferFund(1001, 1003, 2000.0));
+		// CORRECT - both 1001 and 1002 are mocked above
+		assertTrue(accService.transferFund(1001, 1002, 2000.0));
 	}
 }
